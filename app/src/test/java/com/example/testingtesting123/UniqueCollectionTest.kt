@@ -6,6 +6,7 @@ import org.junit.Test
 class UniqueCollectionTest {
 
     lateinit var collection: UniqueCollection
+    val item = Item("item")
 
     @Before
     fun setUp() {
@@ -16,14 +17,18 @@ class UniqueCollectionTest {
     // TODO 1: Write a test to ensure items can be added to the collection
     @Test
     fun addAnItem() {
-
+        collection.addItem(item)
+        assert(collection.size() == 1 && collection.get(0) == item)
     }
 
     // TODO 2: Write a test to ensure that only unique items can be added to the collection
     // Uniqueness is determined by the Item.name property, which is set via the constructor
     @Test
     fun addUniqueItem() {
-
+        // add same item to the collection
+        val newItem = Item(item.name)
+        collection.addItem(newItem)
+        assert(collection.size() == 1)
     }
 
     // Test Driven Development (TDD) test - complete specified function so that this test passes
